@@ -1,13 +1,14 @@
-# --- Add repos --- 'brew tap'
+tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
-tap "buo/cask-upgrade"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
 
-# --- 'brew install'
 brew "git"
 brew "sqlite"
+brew "wget"
+brew "zsh"
 
 cask "1password"
 cask "box-drive"

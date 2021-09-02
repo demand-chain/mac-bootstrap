@@ -38,6 +38,9 @@ When you invoke `bootstrap`, here's what it does:
 
 After running `bootstrap` there are still a few things that need to be done.
 
-- Restart your machine in order for some changes to take effect.
-- Complete [post-install tasks][post-install-tasks] from dotfiles README.
-- Set up desired macOS keyboard shortcuts (see list below)
+- Restart your machine in order for some changes to take effect
+- open Terminal and run `brew bundle install`
+- While that's running:
+  - create admin account
+  - enable filevault disk encryption
+  - install kaspersky anti-virus
