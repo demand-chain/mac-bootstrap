@@ -2,7 +2,7 @@
 
 This script will provision a new machine running a fresh install of [macOS Big Sur (11.15)][bigsur].
 
-The [`bootstrap`][bootstrap] script is very specific to the Mac platform.
+This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 
 ## Prerequisites
 
@@ -48,3 +48,10 @@ After running `bootstrap` there are still a few things that need to be done.
   - create admin account
   - enable filevault disk encryption
   - install kaspersky anti-virus
+
+[asdf]: https://asdf-vm.com/
+[bootstrap]: https://bitbucket.org/jsaterdalen/mac-bootstrap/src/master/
+[bootstrap-josh]: https://github.com/JSaterdalen/mac-bootstrap/
+[brew-bundle]: https://github.com/Homebrew/homebrew-bundle#usage
+[bigsur]: https://www.apple.com/macos/big-sur/
+[jsaterdalen]: https://github.com/JSaterdalen
