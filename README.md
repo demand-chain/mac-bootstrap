@@ -8,11 +8,15 @@ The [`bootstrap`][bootstrap] script is very specific to the Mac platform.
 
 1. Make sure your software is up to date:
 
-   `sudo softwareupdate -i -a --restart`
+   ```sh
+   sudo softwareupdate -i -a --restart
+   ```
 
 2. Install Apple's command line tools:
 
-   `xcode-select --install`
+   ```sh
+   xcode-select --install
+   ```
 
 3. Reboot, check for additional updates, then reinstall and reboot as needed.
 
