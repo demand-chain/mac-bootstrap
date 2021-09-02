@@ -1,0 +1,179 @@
+#!/usr/bin/env bash
+
+################################################################################
+# bootstrap
+#
+# This script is intended to set up a new Mac computer with my dotfiles and
+# other development preferences.
+################################################################################
+
+# TODO add checks for each step to skip them if the script is run again
+# could set an environment variable for this, for each step
+# then say "has this step run yet?"
+
+# Thank you, thoughtbot!
+bootstrap_echo() {
+  local fmt="$1"; shift
+
+  printf "\\n[BOOTSTRAP] $fmt\\n" "$@"
+}
+
+
+################################################################################
+# VARIABLE DECLARATIONS
+################################################################################
+
+osname=$(uname)
+export COMMANDLINE_TOOLS="/Library/Developer/CommandLineTools"
+export BOOTSTRAP_REPO_URL="https://github.com/JSaterdalen/mac-bootstrap.git"
+export BOOTSTRAP_DIR="${HOME}/mac-bootstrap"
+
+PS3="> "
+
+comp=$(scutil --get ComputerName)
+host=$(scutil --get LocalHostName)
+
+if [ -z "$comp" ] || [ -z "$host" ]; then
+  DEFAULT_COMPUTER_NAME="My Mac Computer"
+  DEFAULT_HOST_NAME="my-mac-computer"
+else
+  DEFAULT_COMPUTER_NAME="$comp"
+  DEFAULT_HOST_NAME="$host"
+fi
+
+DEFAULT_TIME_ZONE="America/Chicago"
+
+
+################################################################################
+# Make sure we're on a Mac before continuing
+################################################################################
+
+if [ "$osname" == "Linux" ]; then
+  bootstrap_echo "Oops, looks like you're on a Linux machine."
+  exit 1
+elif [ "$osname" != "Darwin" ]; then
+  bootstrap_echo "Oops, it looks like you're using a non-UNIX system. This script
+only supports Mac. Exiting..."
+  exit 1
+fi
+
+
+################################################################################
+# Check for presence of command line tools if macOS
+################################################################################
+
+if [ ! -d "$COMMANDLINE_TOOLS" ]; then
+  bootstrap_echo "Apple's command line developer tools must be installed before
+running this script. To install them, just run 'xcode-select --install' from
+the terminal and then follow the prompts. Once the command line tools have been
+installed, you can try running this script again."
+  exit 1
+fi
+
+
+################################################################################
+# Authenticate
+################################################################################
+
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until bootstrap has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+set -e
+
+
+################################################################################
+# Welcome and setup
+################################################################################
+
+echo
+echo "*************************************************************************"
+echo "*******                                                           *******"
+echo "*******                 Welcome to Mac Bootstrap!                 *******"
+echo "*******                                                           *******"
+echo "*******        https://github.com/JSaterdalen/mac-bootstrap       *******"
+echo "*******                                                           *******"
+echo "*************************************************************************"
+echo
+
+printf "Before we get started, let's get some info about your setup.\\n"
+
+printf "\\nBootstrap script will be cloned from:
+==> %s.\\n" "$BOOTSTRAP_REPO_URL"
+
+printf "\\nEnter a name for your Mac. (Leave blank for default: %s)\\n" "$DEFAULT_COMPUTER_NAME"
+read -r -p "> " COMPUTER_NAME
+export COMPUTER_NAME=${COMPUTER_NAME:-$DEFAULT_COMPUTER_NAME}
+
+printf "\\nEnter a host name for your Mac. (Leave blank for default: %s)\\n" "$DEFAULT_HOST_NAME"
+read -r -p "> " HOST_NAME
+export HOST_NAME=${HOST_NAME:-$DEFAULT_HOST_NAME}
+
+printf "\\nEnter your desired time zone.
+To view available options run \`sudo systemsetup -listtimezones\`
+(Leave blank for default: %s)\\n" "$DEFAULT_TIME_ZONE"
+read -r -p "> " TIME_ZONE
+export TIME_ZONE=${TIME_ZONE:-$DEFAULT_TIME_ZONE}
+
+printf "\\nLooks good. Here's what we've got so far.\\n"
+printf "Computer name:     ==> [%s]\\n" "$COMPUTER_NAME"
+printf "Host name:         ==> [%s]\\n" "$HOST_NAME"
+printf "Time zone:         ==> [%s]\\n" "$TIME_ZONE"
+
+echo
+read -p "Continue? (y/n) " -n 1 -r
+echo
+if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+  echo "Exiting..."
+  exit 1
+fi
+
+
+################################################################################
+# Clone mac-bootstrap repo
+################################################################################
+
+bootstrap_echo "Cloning mac-bootstrap repo..."
+
+if [ -d "$BOOTSTRAP_DIR" ]; then
+  rm -rf "$BOOTSTRAP_DIR"
+fi
+
+git clone "$BOOTSTRAP_REPO_URL" "$BOOTSTRAP_DIR"
+
+
+################################################################################
+# 1. Provision with my adaptation of Laptop (install/laptop)
+################################################################################
+
+bootstrap_echo "Step 1: Installing Laptop script..."
+
+sh "${BOOTSTRAP_DIR}/install/laptop" 2>&1 | tee ~/laptop.log
+
+bootstrap_echo "Done!"
+
+################################################################################
+# 2. Set macOS preferences
+################################################################################
+
+bootstrap_echo "Step 3: Setting macOS preferences..."
+
+source "${BOOTSTRAP_DIR}/install/macos-defaults"
+
+bootstrap_echo "Done!"
+
+
+rm -rf "$BOOTSTRAP_DIR"
+
+echo
+echo "**********************************************************************"
+echo "**********************************************************************"
+echo "****                                                              ****"
+echo "**** Mac Bootstrap script complete! Please restart your computer. ****"
+echo "****                                                              ****"
+echo "****       After restart, please follow post-install steps        ****"
+echo "****                                                              ****"
+echo "**********************************************************************"
+echo "**********************************************************************"
+echo
