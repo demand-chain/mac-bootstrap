@@ -25,7 +25,7 @@ The [`bootstrap`][bootstrap] script is very specific to the Mac platform.
 To install with a one-liner, run this:
 
 ```sh
-curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/de43f43492f967c3521de36b15d716e3d033027c/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
+curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9c088bb71e3b2c513c8007184f81bc33/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
 ```
 
 WARNING: This script will ask for your password multiple times. You'll need to babysit it for a while. 😉
