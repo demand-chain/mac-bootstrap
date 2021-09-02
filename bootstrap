@@ -25,7 +25,7 @@ bootstrap_echo() {
 
 osname=$(uname)
 export COMMANDLINE_TOOLS="/Library/Developer/CommandLineTools"
-export BOOTSTRAP_REPO_URL="https://github.com/JSaterdalen/mac-bootstrap.git"
+export BOOTSTRAP_REPO_URL="https://jsaterdalen@bitbucket.org/jsaterdalen/mac-bootstrap.git"
 export BOOTSTRAP_DIR="${HOME}/mac-bootstrap"
 
 PS3="> "
@@ -92,7 +92,7 @@ echo "*************************************************************************"
 echo "*******                                                           *******"
 echo "*******                 Welcome to Mac Bootstrap!                 *******"
 echo "*******                                                           *******"
-echo "*******        https://github.com/JSaterdalen/mac-bootstrap       *******"
+echo "*******      https://bitbucket.org/jsaterdalen/mac-bootstrap      *******"
 echo "*******                                                           *******"
 echo "*************************************************************************"
 echo
