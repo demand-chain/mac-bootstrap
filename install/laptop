@@ -73,7 +73,7 @@ EOF
 
 update_zsh_shell
 
-# link Brewfile to Home
-ln -sf "$HOMEBREW_PREFIX/Brewfile" "$HOME/Brewfile"
+# copy Brewfile to Home
+cp "$BOOTSTRAP_DIR/Brewfile" "$HOME/Brewfile"
 
 laptop_echo "Laptop installation completed successfully!"
