@@ -28,8 +28,6 @@ To install with a one-liner, run this:
 curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9c088bb71e3b2c513c8007184f81bc33/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
 ```
 
-WARNING: This script will ask for your password multiple times. You'll need to babysit it for a while. 😉
-
 ## What does it do?
 
 When you invoke `bootstrap`, here's what it does:
@@ -45,9 +43,9 @@ After running `bootstrap` there are still a few things that need to be done.
 - Restart your machine in order for some changes to take effect
 - open Terminal and run `brew bundle install`
 - While that's running:
-  - create admin account
-  - enable filevault disk encryption
-  - install kaspersky anti-virus
+    - create admin account
+    - enable filevault disk encryption
+    - install kaspersky anti-virus
 
 [asdf]: https://asdf-vm.com/
 [bootstrap]: https://bitbucket.org/jsaterdalen/mac-bootstrap/src/master/
