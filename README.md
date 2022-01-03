@@ -1,6 +1,6 @@
 # Mac Bootstrap for Demand Chain
 
-This script will provision a new machine running a fresh install of [macOS Big Sur (11.15)][bigsur].
+This script will provision a new machine running a fresh install of [macOS Monterey][macos]. It configures the shell, installs Rosetta, and installs useful applications.
 
 This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 
@@ -22,7 +22,7 @@ This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 
 ## Installation
 
-To install with a one-liner, run this:
+To install with a one-liner, run this in the Terminal:
 
 ```sh
 curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9c088bb71e3b2c513c8007184f81bc33/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
@@ -30,26 +30,35 @@ curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9
 
 ## What does it do?
 
-When you invoke `bootstrap`, here's what it does:
-
-- Step 1: Run an adaptation of thoughtbot's [Laptop script][laptop].
-- set mac defaults
-- install brew stuff
+- installs Rosetta 2
+- installs [Homebrew][homebrew]
+- installs/sets shell to ZSH
+- sets some system defaults
+    - computer name/host name
+    - enables trackpad tap-to-click 
+- installs command line tools, with Homebrew
+    - git
+    - sqlite
+    - wget
+    - zsh
 
 ## Post-install Tasks
 
-After running `bootstrap` there are still a few things that need to be done.
+After running `bootstrap` and restarting, there are still a few things that need to be done.
 
-- Restart your machine in order for some changes to take effect
+### Automatic app install
+
 - open Terminal and run `brew bundle install`
-- While that's running:
+- while this is running, do the manual steps below
+
+### Manual steps
+
     - create admin account
     - enable filevault disk encryption
-    - install kaspersky anti-virus
+    - install Kaspersky anti-virus
 
-[asdf]: https://asdf-vm.com/
 [bootstrap]: https://bitbucket.org/jsaterdalen/mac-bootstrap/src/master/
 [bootstrap-josh]: https://github.com/JSaterdalen/mac-bootstrap/
 [brew-bundle]: https://github.com/Homebrew/homebrew-bundle#usage
-[bigsur]: https://www.apple.com/macos/big-sur/
-[jsaterdalen]: https://github.com/JSaterdalen
+[macos]: https://www.apple.com/macos/monterey/
+[homebrew]: https://brew.sh/
