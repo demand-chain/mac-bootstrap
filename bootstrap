@@ -144,24 +144,24 @@ git clone "$BOOTSTRAP_REPO_URL" "$BOOTSTRAP_DIR"
 
 
 ################################################################################
-# 1. Provision with my adaptation of Laptop (install/laptop)
+# 1. Run Laptop script
 ################################################################################
 
-bootstrap_echo "Step 1: Installing Laptop script..."
+bootstrap_echo "Step 1: Installing laptop script..."
 
 sh "${BOOTSTRAP_DIR}/install/laptop" 2>&1 | tee ~/laptop.log
 
-bootstrap_echo "Done!"
+bootstrap_echo "Step 1: Done!"
 
 ################################################################################
 # 2. Set macOS preferences
 ################################################################################
 
-bootstrap_echo "Step 3: Setting macOS preferences..."
+bootstrap_echo "Step 2: Setting macOS preferences..."
 
 source "${BOOTSTRAP_DIR}/install/macos-defaults"
 
-bootstrap_echo "Done!"
+bootstrap_echo "Step 2: Done!"
 
 
 rm -rf "$BOOTSTRAP_DIR"
@@ -173,6 +173,7 @@ echo "****                                                              ****"
 echo "**** Mac Bootstrap script complete! Please restart your computer. ****"
 echo "****                                                              ****"
 echo "****       After restart, please follow post-install steps        ****"
+echo "****                        in the readme                         ****"
 echo "****                                                              ****"
 echo "**********************************************************************"
 echo "**********************************************************************"
