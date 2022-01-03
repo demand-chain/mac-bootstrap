@@ -43,6 +43,11 @@ update_zsh_shell() {
   sudo chsh -s "$shell_path" "$USER"
 }
 
+# install Rosetta 2, if needed
+if [[ "$CPU" == "arm" ]]; then
+  softwareupdate --install-rosetta --agree-to-license
+fi
+
 if ! command -v brew >/dev/null; then
   laptop_echo "Installing Homebrew ..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
