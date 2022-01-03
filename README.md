@@ -4,6 +4,34 @@ This script will provision a new machine running a fresh install of [macOS Monte
 
 This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 
+## What does it do?
+
+- installs Rosetta 2
+- installs [Homebrew][homebrew]
+- installs/sets shell to ZSH
+- sets some system defaults
+    - computer name/host name
+    - enables trackpad tap-to-click 
+- installs command line tools, with Homebrew
+    - git
+    - sqlite
+    - wget
+    - zsh
+- installs apps
+    - 1Password
+    - Box Drive
+    - Box Tools
+    - Firefox
+    - Google Chrome
+    - GoToMeeting
+    - Microsoft Edge
+    - Microsoft Office
+    - Microsoft Teams
+    - Slack
+    - Visual Studio Code
+    - VLC player
+    - Zoom
+
 ## Prerequisites
 
 1. Make sure your software is up to date:
@@ -27,21 +55,6 @@ To install with a one-liner, run this in the Terminal:
 ```sh
 curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9c088bb71e3b2c513c8007184f81bc33/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
 ```
-
-## What does it do?
-
-- installs Rosetta 2
-- installs [Homebrew][homebrew]
-- installs/sets shell to ZSH
-- sets some system defaults
-    - computer name/host name
-    - enables trackpad tap-to-click 
-- installs command line tools, with Homebrew
-    - git
-    - sqlite
-    - wget
-    - zsh
-
 ## Post-install Tasks
 
 After running `bootstrap` and restarting, there are still a few things that need to be done.
