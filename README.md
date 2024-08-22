@@ -48,7 +48,7 @@ This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 To install with a one-liner, run this in the Terminal:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/demand-chain/mac-bootstrap/main/bootstrap?token=GHSAT0AAAAAACV4BWBSSD4WMGARWGADA7GGZWHOLTQ && sh bootstrap 2>&1 | tee ~/bootstrap.log
+curl --remote-name https://raw.githubusercontent.com/demand-chain/mac-bootstrap/main/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
 ```
 ## Post-install Tasks
 
