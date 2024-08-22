@@ -19,17 +19,12 @@ This is a simplified version of my personal [bootstrap script][bootstrap-josh].
     - zsh
 - installs apps
     - 1Password
-    - Box Drive
-    - Box Tools
     - Firefox
     - Google Chrome
-    - GoToMeeting
-    - Microsoft Edge
     - Microsoft Office
     - Microsoft Teams
     - Slack
     - Visual Studio Code
-    - VLC player
     - Zoom
 
 ## Prerequisites
@@ -53,7 +48,7 @@ This is a simplified version of my personal [bootstrap script][bootstrap-josh].
 To install with a one-liner, run this in the Terminal:
 
 ```sh
-curl --remote-name https://bitbucket.org/jsaterdalen/mac-bootstrap/raw/e3080bdc9c088bb71e3b2c513c8007184f81bc33/bootstrap && sh bootstrap 2>&1 | tee ~/bootstrap.log
+curl --remote-name https://raw.githubusercontent.com/demand-chain/mac-bootstrap/main/bootstrap?token=GHSAT0AAAAAACV4BWBSSD4WMGARWGADA7GGZWHOLTQ && sh bootstrap 2>&1 | tee ~/bootstrap.log
 ```
 ## Post-install Tasks
 
@@ -68,9 +63,8 @@ After running `bootstrap` and restarting, there are still a few things that need
 
     - create admin account
     - enable filevault disk encryption
-    - install Kaspersky anti-virus
 
-[bootstrap]: https://bitbucket.org/jsaterdalen/mac-bootstrap/src/master/
+[bootstrap]: https://github.com/demand-chain/mac-bootstrap
 [bootstrap-josh]: https://github.com/JSaterdalen/mac-bootstrap/
 [brew-bundle]: https://github.com/Homebrew/homebrew-bundle#usage
 [macos]: https://www.apple.com/macos/monterey/
